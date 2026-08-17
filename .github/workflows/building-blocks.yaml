@@ -1,0 +1,23 @@
+name: Building Blocks
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Run task
+        id: task
+        run: echo "hello"
+      
+      - name: Success message
+        if: success()
+        run: echo "goodbye"
+      
+      - name: Failure message
+        if: failure()
+        run: echo "failed"
